@@ -3,9 +3,11 @@
     <entity name="CityWeather" representedClassName="CityWeather" syncable="YES" codeGenerationType="class">
         <attribute name="city" optional="YES" attributeType="String"/>
         <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="humidity" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="icon" optional="YES" attributeType="String"/>
         <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="speed" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="tmp" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <relationship name="currentForecast" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DailyWeather" inverseName="isFor" inverseEntity="DailyWeather"/>
         <relationship name="futureForecast" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DailyWeather" inverseName="belongsTo" inverseEntity="DailyWeather"/>

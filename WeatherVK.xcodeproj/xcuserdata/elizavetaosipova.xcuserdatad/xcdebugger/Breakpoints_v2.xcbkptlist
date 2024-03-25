@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "CAD3FF3D-8033-4FF4-8FFA-A6044D05A2F8"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "69E0F72C-2CC7-49F6-BE03-932C9B28CB50"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherVK/Networking.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "getWeatherInfo(url:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "69E0F72C-2CC7-49F6-BE03-932C9B28CB50 - 209609aca04ec594"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in WeatherVK.Networking.getWeatherInfo(url: Foundation.URL) -&gt; ()"
+                  moduleName = "WeatherVK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/elizavetaosipova/Desktop/WeaterVK/WeatherVK/WeatherVK/Networking.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "1620">
+               </Location>
+               <Location
+                  uuid = "69E0F72C-2CC7-49F6-BE03-932C9B28CB50 - 5f05a4ceff20df8f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in WeatherVK.Networking.getWeatherInfo(url: Foundation.URL) -&gt; ()"
+                  moduleName = "WeatherVK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/elizavetaosipova/Desktop/WeaterVK/WeatherVK/WeatherVK/Networking.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "80">
+               </Location>
+               <Location
+                  uuid = "69E0F72C-2CC7-49F6-BE03-932C9B28CB50 - 209609aca04ec594"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in WeatherVK.Networking.getWeatherInfo(url: Foundation.URL) -&gt; ()"
+                  moduleName = "WeatherVK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/elizavetaosipova/Desktop/WeaterVK/WeatherVK/WeatherVK/Networking.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "1680">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "88E25F85-B2A0-4360-8038-9D6A2D4EFB5F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherVK/CoreDataManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "createCity(city:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "88E25F85-B2A0-4360-8038-9D6A2D4EFB5F - 7de7fc2ef65237d4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherVK.CoreDataManager.createCity(city: WeatherVK.WeatherMainCast) -&gt; ()"
+                  moduleName = "WeatherVK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/elizavetaosipova/Desktop/WeaterVK/WeatherVK/WeatherVK/CoreDataManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "508">
+               </Location>
+               <Location
+                  uuid = "88E25F85-B2A0-4360-8038-9D6A2D4EFB5F - 6c41eb4e2fc3e4c4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherVK.CoreDataManager.createCity(city: WeatherVK.WeatherForCity) -&gt; ()"
+                  moduleName = "WeatherVK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/elizavetaosipova/Desktop/WeaterVK/WeatherVK/WeatherVK/CoreDataManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "768">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "02477465-A704-4C5B-9A8B-AAC90613F333"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherVK/CoreDataManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "updateCity(city:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "02477465-A704-4C5B-9A8B-AAC90613F333 - 35ffcaf1bb767d3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherVK.CoreDataManager.updateCity(city: WeatherVK.WeatherMainCast) -&gt; Swift.Optional&lt;WeatherVK.CityWeather&gt;"
+                  moduleName = "WeatherVK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/elizavetaosipova/Desktop/WeaterVK/WeatherVK/WeatherVK/CoreDataManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "151"
+                  endingLineNumber = "151"
+                  offsetFromSymbolStart = "1764">
+               </Location>
+               <Location
+                  uuid = "02477465-A704-4C5B-9A8B-AAC90613F333 - 5b3381fbd62bf118"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherVK.CoreDataManager.updateCity(city: WeatherVK.WeatherForCity) -&gt; Swift.Optional&lt;WeatherVK.CityWeather&gt;"
+                  moduleName = "WeatherVK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/elizavetaosipova/Desktop/WeaterVK/WeatherVK/WeatherVK/CoreDataManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "148"
+                  endingLineNumber = "148"
+                  offsetFromSymbolStart = "1680">
+               </Location>
+               <Location
+                  uuid = "02477465-A704-4C5B-9A8B-AAC90613F333 - 35ffcaf1bb76670"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherVK.CoreDataManager.updateCity(city: WeatherVK.WeatherMainCast) -&gt; Swift.Optional&lt;WeatherVK.CityWeather&gt;"
+                  moduleName = "WeatherVK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/elizavetaosipova/Desktop/WeaterVK/WeatherVK/WeatherVK/CoreDataManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "148"
+                  endingLineNumber = "148"
+                  offsetFromSymbolStart = "1228">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9613C45A-FAC7-4DDB-A26A-6AAA273CAB5D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherVK/WeatherCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "set(city:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

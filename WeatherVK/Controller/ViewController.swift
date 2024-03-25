@@ -6,71 +6,68 @@
 //
 
 import UIKit
-//import Alamofire
 import CoreLocation
 
 final class ViewController: UIViewController {
-
+    
     //  MARK: - Constants
     private let stackView = UIStackView()
     private let searchBar = UISearchBar()
     private let coreDataManager = CoreDataManager()
     private let locationManager = CLLocationManager()
-
+    
     private enum Constants {
         static let backgroundColor = UIColor(named: "dark")
     }
-
+    
     //  MARK: - Properties
     private var networking: Networking!
-    private var currentUserWeather = UserWeather()
-
+    
     private var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let tempCV = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return tempCV
     }()
-
+    
     //  MARK: - View did load
     override func viewDidLoad() {
         super.viewDidLoad()
         networking = Networking(coreDataManager: coreDataManager)
         networking.reloadCollectionDelegate = self
-
+        
         view.backgroundColor = Constants.backgroundColor
-
+        
         configureStackView()
-        currentUserWeather.isHidden = true
-        addToStackView(view: currentUserWeather, height: 80)
         configureLocation()
         configureSearchBar()
         createWeatherCollectionView()
         fetchWeather()
     }
-
-    //  MARK: - Fetch weather
-    private func fetchWeather() {
-        if let cities = coreDataManager.getCitiesWeather() {
-            for city in cities {
-                let url = getURL(lat: city.latitude, lng: city.longitude)
-                networking.getWeatherInfo(url: url)
-            }
-        }
-    }
-
-    //  MARK: - Get URL
-    private func getURL(lat: Float, lng: Float) -> URL {
-        return URL(string: String(
-            "https://api.openweathermap.org/data/2.5/weather?lat=\(lat)&lon=\(lng)&appid=be2d818c98fc7a2c8da8479d3b15a785&units=metric"))!
-    }
-
+    
+    // MARK: - Configure location
     private func configureLocation() {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
     }
-
+    
+    //  MARK: - Fetch weather
+    private func fetchWeather() {
+        if let cities = coreDataManager.getCitiesWeather() {
+            for city in cities {
+                let url = getURL(lat: city.latitude, lng: city.longitude)
+                self.networking.fetchWeatherInfo(url: url)
+            }
+        }
+    }
+    
+    //  MARK: - Get URL
+    private func getURL(lat: Float, lng: Float) -> URL {
+        return URL(string: String(
+            "https://api.openweathermap.org/data/2.5/weather?lat=\(lat)&lon=\(lng)&appid=be2d818c98fc7a2c8da8479d3b15a785&units=metric"))!
+    }
+    
     //  MARK: - Configure stack view
     private func configureStackView() {
         view.addSubview(stackView)
@@ -83,25 +80,25 @@ final class ViewController: UIViewController {
         stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10).isActive = true
         stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10).isActive = true
     }
-
+    
     //  MARK: - Configure search bar
     private func configureSearchBar() {
         addToStackView(view: searchBar, height: 30)
-
+        
         searchBar.placeholder = "Enter City"
         searchBar.tintColor = .systemPink
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = UIColor.white
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).textColor = UIColor.darkText
-
+        
         searchBar.backgroundImage = UIImage()
         searchBar.delegate = self
         searchBar.resignFirstResponder()
     }
-
+    
     //  MARK: - Create weather collection view
     private func createWeatherCollectionView() {
         view.addSubview(collectionView)
-
+        
         collectionView.backgroundColor = UIColor.clear
         collectionView.showsVerticalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -109,12 +106,12 @@ final class ViewController: UIViewController {
         collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
-
+        
         collectionView.register(WeatherCell.self, forCellWithReuseIdentifier: WeatherCell.identifire)
         collectionView.delegate = self
         collectionView.dataSource = self
     }
-
+    
     //  MARK: - Add to stack view
     private func addToStackView(view: UIView, height: CGFloat) {
         stackView.addArrangedSubview(view)
@@ -123,12 +120,12 @@ final class ViewController: UIViewController {
         view.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
         view.heightAnchor.constraint(equalToConstant: height).isActive = true
     }
-
+    
     //  MARK: - Get coordinates by name
     func getCoordinateFrom(address: String, completion: @escaping(_ coordinate: CLLocationCoordinate2D?, _ error: Error?) -> () ) {
         CLGeocoder().geocodeAddressString(address) { completion($0?.first?.location?.coordinate, $1) }
     }
-
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         dismissKeyboard()
     }
@@ -139,15 +136,15 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return coreDataManager.getCitiesWeather()?.count ?? 0
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeatherCell.identifire, for: indexPath) as! WeatherCell
         cell.set(city: (coreDataManager.getCitiesWeather()![indexPath.row]))
         return cell
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        currentUserWeather.isHidden = !currentUserWeather.isHidden
+        // currentUserWeather.isHidden = !currentUserWeather.isHidden
     }
 }
 
@@ -168,26 +165,25 @@ extension ViewController: UISearchBarDelegate {
         guard let address = searchBar.text else { return }
         getCoordinateFrom(address: address) { coordinate, error in
             guard let coordinate = coordinate, error == nil else {
-                print (error ?? "hi")
                 return
             }
             let latitude = Float(coordinate.latitude)
             let longitude = Float(coordinate.longitude)
-
+            
             let weatherURL = self.getURL(lat: latitude, lng: longitude)
-            self.networking.getWeatherInfo(url: weatherURL)
+            self.networking.fetchWeatherInfo(url: weatherURL)
         }
     }
-
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         dismissKeyboard()
     }
-
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         dismissKeyboard()
-
+        
     }
-
+    
     @objc private func dismissKeyboard(){
         view.endEditing(true)
         searchBar.text = nil
@@ -204,22 +200,24 @@ extension ViewController: ReloadCollectionDelegate {
 
 extension ViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if CLLocationManager.locationServicesEnabled() {
-            switch CLLocationManager.authorizationStatus() {
-            case .notDetermined, .restricted, .denied:
-                break
-            case .authorizedAlways, .authorizedWhenInUse:
-                currentUserWeather.isHidden = false
-            }
-        } else {
-            print("Location services are not enabled")
+        if let location = locations.last {
+            let lat = Float(location.coordinate.latitude)
+            let lng = Float(location.coordinate.longitude)
+            let weatherURL = getURL(lat: lat, lng: lng)
+            print(weatherURL)
+            self.networking.fetchWeatherInfo(url: weatherURL)
+
         }
-        if !currentUserWeather.isHidden {
-            let coordinate = locations.last?.coordinate
-            let weatherURL = getURL(lat: Float(coordinate!.latitude), lng: Float(coordinate!.longitude))
-            networking.getCurrentrWeatherInfo(url: weatherURL) {city in
-                self.currentUserWeather.setup(city: city)
-            }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Failed to find user's location: \(error.localizedDescription)")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse || status == .authorizedAlways {
+            locationManager.startUpdatingLocation()
         }
     }
 }
+

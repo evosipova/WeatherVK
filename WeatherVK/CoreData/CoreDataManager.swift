@@ -36,7 +36,6 @@ final class CoreDataManager {
     }()
 
 
-
     // MARK: - Has saved weather
     func hasWeather() -> Bool {
         return getCitiesWeather() != nil
@@ -59,7 +58,6 @@ final class CoreDataManager {
     // MARK: - Get weather for city
     func getCityWeather(cityName: String) -> CityWeather? {
         let fetchRequest = NSFetchRequest<CityWeather>(entityName: EntityKeys.cityWeatherName)
-        //fetchRequest.fetchLimit = 1
         fetchRequest.predicate = NSPredicate(format: "city == %@", cityName)
 
         do {
@@ -90,8 +88,8 @@ final class CoreDataManager {
         cityWeather.latitude = Float(city.coord.lat)
         cityWeather.tmp = Float(city.main.temp)
         cityWeather.icon = city.weather.first?.icon
-//        cityWeather.currentForecast = createWeather(city.)
-//        cityWeather.futureForecast = createFutureWeather((city.weeklyForecast)!)
+        cityWeather.speed = Float(city.wind.speed)
+        cityWeather.humidity = Int64(city.main.humidity)
 
         do {
             try context.save()
@@ -129,32 +127,41 @@ final class CoreDataManager {
         return NSSet(array: result as [Any])
     }
 
-
     // MARK: - Update city
     @discardableResult
     func updateCity(city: WeatherMainCast) -> CityWeather? {
         let context = Context
-        let fetchRequest = NSFetchRequest<CityWeather>(entityName: EntityKeys.cityWeatherName)
-        fetchRequest.fetchLimit = 1
+        let fetchRequest: NSFetchRequest<CityWeather> = CityWeather.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "city == %@", city.name)
 
         do {
-            let cities = try Context.fetch(fetchRequest)
-            cities.first?.city = city.name
-            cities.first?.longitude = Float(city.coord.lon)
-            cities.first?.latitude = Float(city.coord.lat)
-            cities.first?.tmp = Float(city.main.temp)
+            let results = try context.fetch(fetchRequest)
 
-            cities.first?.icon = city.weather.first?.icon
+            if let existingCity = results.first {
+                existingCity.city = city.name
+                existingCity.longitude = Float(city.coord.lon)
+                existingCity.latitude = Float(city.coord.lat)
+                existingCity.tmp = Float(city.main.temp)
+                existingCity.icon = city.weather.first?.icon
+                existingCity.speed = Float(city.wind.speed)
+                existingCity.humidity = Int64(city.main.humidity)
+            } else {
+                let newCityWeather = NSEntityDescription.insertNewObject(forEntityName: EntityKeys.cityWeatherName, into: context) as! CityWeather
+                newCityWeather.city = city.name
+                newCityWeather.longitude = Float(city.coord.lon)
+                newCityWeather.latitude = Float(city.coord.lat)
+                newCityWeather.tmp = Float(city.main.temp)
+                newCityWeather.icon = city.weather.first?.icon
+                newCityWeather.speed = Float(city.wind.speed)
+                newCityWeather.humidity = Int64(city.main.humidity)
+            }
 
-//            cities.first?.currentForecast = createWeather(city.current)
-//            cities.first?.futureForecast = createFutureWeather(city.weeklyForecast)
             try context.save()
-            return cities.first
+            return results.first ?? nil
         } catch {
             print("Failed to update city: \(error)")
+            return nil
         }
-        return nil
     }
 
     // MARK: - Update city array
