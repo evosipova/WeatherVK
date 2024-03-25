@@ -49,7 +49,7 @@ final class WeatherCell: UICollectionViewCell {
 
 
         let humidity = Int(city.humidity).description
-        humidityLabel =  createLabel(text: windSpeed + "%", font: .monospacedSystemFont(ofSize: 20, weight: UIFont.Weight.medium))
+        humidityLabel =  createLabel(text: humidity + "%", font: .monospacedSystemFont(ofSize: 20, weight: UIFont.Weight.medium))
         configureHumidityLabel(label: humidityLabel)
 
         if let iconImg = city.icon, let image = UIImage(named: iconImg) {
